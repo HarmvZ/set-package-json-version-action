@@ -16,6 +16,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set package.json version
-        uses: HarmvZ/set-package-json-version-action@v0.0.2
+        uses: HarmvZ/set-package-json-version-action@v0.0.3
         with:
           path: .
