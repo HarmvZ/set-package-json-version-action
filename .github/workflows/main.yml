@@ -19,4 +19,4 @@ jobs:
         uses: HarmvZ/set-package-json-version-action@v0.0.3
         with:
           path: .
-          version: github.event.inputs.version
+          version: ${{ github.event.inputs.version }}
