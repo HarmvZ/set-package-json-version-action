@@ -20,3 +20,10 @@ jobs:
         with:
           path: .
           version: ${{ github.event.inputs.version }}
+          
+      - name: Push changelog changes
+        uses: peter-evans/create-pull-request@v3.8.2
+        with:
+          commit-message: Update package.json version
+          branch: update-version
+          title: Automated Changlog Update
