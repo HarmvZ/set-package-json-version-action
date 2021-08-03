@@ -1,0 +1,21 @@
+name: Run version update
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to create, eg, 5.11.2'
+        required: true
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set package.json version
+        uses: HarmvZ/set-package-json-version-action@v0.0.1-alpha
+        with:
+          path: .
