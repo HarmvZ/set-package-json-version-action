@@ -16,10 +16,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set package.json version
-        uses: HarmvZ/set-package-json-version-action@v0.1.0
+        uses: HarmvZ/set-package-json-version-action@v0.1.1
         with:
           path: .
           version: ${{ github.event.inputs.version }}
+      
+      - name: Update package-lock file
+        run: npm install
           
       - name: Push changelog changes
         uses: peter-evans/create-pull-request@v3.8.2
