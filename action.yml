@@ -1,0 +1,13 @@
+name: 'Set package.json version'
+description: 'Set the version in package.json'
+inputs:
+  version:
+    description: 'Version to create, eg, 5.11.2'
+    required: true
+  path:
+    description: 'Path to package.json file'
+    default: .
+runs:
+  using: 'node12'
+  main: 'index.js'
+
