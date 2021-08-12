@@ -1,9 +1,13 @@
 const core = require('@actions/core');
 const { resolve } = require('path');
 const fs = require('fs');
+const semver = require('semver');
 
 try {
   const version = core.getInput('version');
+  if (semver.valid(version) === null) {
+    throw new Error("Invalid SEMVER version");
+  }
   if (!version) {
     throw new Error('No version input defined');
   }
