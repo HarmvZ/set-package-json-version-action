@@ -12,7 +12,7 @@ try {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
   const oldVersion = packageJson.version;
   packageJson.version = version;
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + "\n");
   console.log(`Replaced old package.json version (${oldVersion}) with ${version}.`);
 } catch (error) {
   console.error(error);
