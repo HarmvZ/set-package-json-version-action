@@ -6,6 +6,9 @@ const newVersion = '1.2.3';
 const tempdir = fs.mkdtempSync('test');
 const packageJson = { "version": "1.1.1" };
 describe('replaceVersion', () => {
+  afterAll(() => {
+    fs.rmSync(tempdir, { recursive: true });
+  })
   test('Semver version validation', () => {
     expect(() => replaceVersion(tempdir, '1.02', true)).toThrow("Invalid SemVer version");
     expect(() => replaceVersion(tempdir, '1.02', false)).not.toThrow("Invalid SemVer version");
