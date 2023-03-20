@@ -10,6 +10,9 @@ inputs:
   path:
     description: 'Path to package.json file'
     default: .
+  validate:
+    description: 'Validate version according to SemVer rules'
+    default: true
 runs:
   using: 'node12'
   main: 'index.js'

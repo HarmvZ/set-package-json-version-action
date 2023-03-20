@@ -5,8 +5,9 @@ const semver = require('semver');
 
 try {
   const version = core.getInput('version');
-  if (semver.valid(version) === null) {
-    throw new Error("Invalid SEMVER version");
+  const validate = core.getBooleanInput('validate');
+  if (validate && semver.valid(version) === null) {
+    throw new Error("Invalid SemVer version");
   }
   if (!version) {
     throw new Error('No version input defined');
