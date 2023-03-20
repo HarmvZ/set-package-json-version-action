@@ -18,7 +18,7 @@ jobs:
       - name: Set package.json version
         uses: HarmvZ/set-package-json-version-action@v0.1.1
         with:
-          path: test/incorrect/location/
+          path: .
           version: ${{ github.event.inputs.version }}
       
       - name: Update package-lock file
