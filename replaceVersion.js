@@ -6,7 +6,7 @@ const replaceVersion = function (inputPath, version, validate) {
   if (validate && semver.valid(version) === null) {
     throw new Error("Invalid SemVer version");
   }
-  const packageJsonPath = resolve(inputPath, './package.json');
+  const packageJsonPath = resolve(inputPath, 'package.json');
   fs.accessSync(packageJsonPath);
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
   const oldVersion = packageJson.version;
