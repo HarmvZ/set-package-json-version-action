@@ -5853,15 +5853,19 @@ try {
 /***/ 8568:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { resolve } = __nccwpck_require__(1017);
+const { join } = __nccwpck_require__(1017);
 const fs = __nccwpck_require__(7147);
 const semver = __nccwpck_require__(4250);
 
 const replaceVersion = function (inputPath, version, validate) {
   if (validate && semver.valid(version) === null) {
-    throw new Error("Invalid SemVer version");
+    throw new Error("Invalid SemVer version.");
   }
-  const packageJsonPath = __nccwpck_require__.ab + "set-package-json-version-action/" + inputPath + '/package.json';
+  const workspacePath = process.env.GITHUB_WORKSPACE;
+  if (!workspacePath) {
+    throw new Error('GITHUB_WORKSPACE env variable is not set.')
+  }
+  const packageJsonPath = join(workspacePath, inputPath, 'package.json');
   fs.accessSync(packageJsonPath);
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
   const oldVersion = packageJson.version;
