@@ -1,6 +1,6 @@
 {
   "name": "set-package-json-version-action",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Github Action to set the version in package.json",
   "main": "index.js",
   "scripts": {
