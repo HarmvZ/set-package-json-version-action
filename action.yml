@@ -9,7 +9,7 @@ inputs:
     required: true
   path:
     description: 'Path to package.json file'
-    default: './'
+    default: ''
   validate:
     description: 'Validate version according to SemVer rules'
     default: true

@@ -4,7 +4,8 @@
   "description": "Github Action to set the version in package.json",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "ncc build index.js --license licenses.txt"
   },
   "repository": {
     "type": "git",

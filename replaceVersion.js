@@ -1,12 +1,16 @@
-const { resolve } = require('path');
+const { join } = require('path');
 const fs = require('fs');
 const semver = require('semver');
 
 const replaceVersion = function (inputPath, version, validate) {
   if (validate && semver.valid(version) === null) {
-    throw new Error("Invalid SemVer version");
+    throw new Error("Invalid SemVer version.");
   }
-  const packageJsonPath = resolve(inputPath, 'package.json');
+  const workspacePath = process.env.GITHUB_WORKSPACE;
+  if (!workspacePath) {
+    throw new Error('GITHUB_WORKSPACE env variable is not set.')
+  }
+  const packageJsonPath = join(workspacePath, inputPath, 'package.json');
   fs.accessSync(packageJsonPath);
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
   const oldVersion = packageJson.version;
